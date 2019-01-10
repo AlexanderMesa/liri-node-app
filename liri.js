@@ -37,7 +37,6 @@ switch (choice) {
     if (input === "") {
       input = "The Sign";
     }
-
     spotify.search({ type: "track", query: input, limit: 20 }, function(
       err,
       data
@@ -47,7 +46,6 @@ switch (choice) {
       }
       for (var i = 2; i < Math.min(5, data.tracks.items.length); i++) {
         console.log("\nSong " + parseInt(i - 1) + ":");
-        //console.log(JSON.stringify(data, null, 2));
         console.log("Artist(s): " + data.tracks.items[i].album.artists[0].name);
         console.log("Name: " + data.tracks.items[i].name);
         data.tracks.items[i].preview_url === null
@@ -57,6 +55,7 @@ switch (choice) {
       }
     });
     break;
+
   case "movie-this":
     axios
       .get(
@@ -75,6 +74,7 @@ switch (choice) {
         console.log("Actors: " + response.data.Actors);
       });
     break;
+
   case "do-what-it-says":
     fs.readFile("random.txt", "utf8", function(error, data) {
       if (error) {
@@ -88,9 +88,6 @@ switch (choice) {
         if (err) {
           return console.log("Error occurred: " + err);
         }
-
-        //console.log(JSON.stringify(data, null, 2));
-        //console.log(textArr[1]);
         console.log("Artist(s): " + data.tracks.items[1].album.artists[0].name);
         console.log("Name: " + data.tracks.items[2].name);
         console.log("Preview URL: " + data.tracks.items[2].preview_url);
