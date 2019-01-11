@@ -57,6 +57,9 @@ switch (choice) {
     break;
 
   case "movie-this":
+    if (input === "") {
+      input = "Mr. Nobody";
+    }
     axios
       .get(
         "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=4cbdc417"
