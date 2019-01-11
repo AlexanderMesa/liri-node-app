@@ -1,10 +1,10 @@
-//Axios and Spotify npm package
+//Axios, Spotify, and Moment npm package
 require("dotenv").config();
 var keys = require("./keys.js");
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
 var axios = require("axios");
-
+var moment = require("moment");
 //fs is a core Node package for reading and writing files
 var fs = require("fs");
 var choice = process.argv[2];
@@ -28,7 +28,12 @@ switch (choice) {
               ", " +
               response.data[i].venue.country
           );
-          console.log("Time: " + response.data[i].datetime);
+          console.log(
+            "Date: " +
+              moment(response.data[i].datetime, "YYYY-MM-DDTHH:mm:ss").format(
+                "MM/DD/YYYY"
+              )
+          );
         }
       });
 
